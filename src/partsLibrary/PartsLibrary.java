@@ -15,9 +15,9 @@ public class PartsLibrary implements Library<Parts> {
 	int maxItemID = 1;
 	private List<Parts> partsList;
 
-/**
- * Tillsammans med Partslibrary : skapar en array av 'partslist'
- */
+	/**
+	 * Tillsammans med Partslibrary : skapar en array av 'partslist'
+	 */
 	public PartsLibrary() {
 		partsList = new ArrayList<>();
 	}
@@ -39,7 +39,7 @@ public class PartsLibrary implements Library<Parts> {
 	}
 
 	/**
-	 * Menu choise 2 - Add Movie to library	
+	 * Menu choise 2 - Add Movie to library
 	 */
 	@Override
 	public boolean addItem(Parts item) {
@@ -52,8 +52,9 @@ public class PartsLibrary implements Library<Parts> {
 	 * Menu choise 3 - Remove Movie from library
 	 */
 	@Override
-	public boolean removeItem(Parts item) {	
+	public boolean removeItem(Parts item) {
 		partsList.remove(item);
+
 		return true;
 	}
 
@@ -61,23 +62,24 @@ public class PartsLibrary implements Library<Parts> {
 	 * Menu choise 4 - Search for a part by part no, descripton, where to buy,
 	 * buy date
 	 */
-	public List<Parts> searchItem(String searchPattern){
-		boolean ok=false;
+	public List<Parts> searchItem(String searchPattern) {
+		boolean ok = false;
 
-		List <Parts> searchResult = new ArrayList<>();
+		List<Parts> searchResult = new ArrayList<>();
 
 		Iterator<Parts> iter = this.partsList.iterator();
 
-		while(iter.hasNext()) {
+		while (iter.hasNext()) {
 			Parts temp = iter.next();
-			if(temp.toString().toLowerCase().contains(searchPattern.toLowerCase())) {
+			if (temp.toString().toLowerCase()
+					.contains(searchPattern.toLowerCase())) {
 				searchResult.add(temp);
-				ok=true;
+				ok = true;
 			}
 		}
 		if (!ok) {
 			System.out.format(" '%s' not found\n", searchPattern);
-			searchResult=null;
+			searchResult = null;
 		}
 		return searchResult;
 	}
@@ -88,12 +90,11 @@ public class PartsLibrary implements Library<Parts> {
 	@Override
 	public void storeItems(String filename) {
 
-		try(PrintWriter pw = new PrintWriter(new FileWriter(filename))){			
+		try (PrintWriter pw = new PrintWriter(new FileWriter(filename))) {
 			for (Parts savedMovie : this.partsList) {
 				pw.println(savedMovie);
 			}
-		} 
-		catch (IOException ioe) {
+		} catch (IOException ioe) {
 			System.out.println("Exception occurred: " + ioe);
 		}
 	}
@@ -113,23 +114,28 @@ public class PartsLibrary implements Library<Parts> {
 
 			while (myReader.hasNextLine()) {
 				String data = myReader.nextLine();
-				System.out.format(" %s\n", data);
+				// System.out.format(" %s\n", data);
 				/**
 				 * Parse data from filename to partslist
 				 */
-				String onePart = data.substring(data.indexOf('[') + 1, data.indexOf(']') + 1);
+				String onePart = data.substring(data.indexOf('[') + 1,
+						data.indexOf(']') + 1);
 				String[] parts = onePart.split("=");
-				String index = parts[1].substring(0, parts[1].indexOf(", partNo"));
-				String partNum = parts[2].substring(0, parts[2].indexOf(", description"));
-				String description = parts[3].substring(0, parts[3].indexOf(", whereToBuy"));
-				String whereToBuy = parts[4].substring(0, parts[4].indexOf(", buyDate"));
+				String index = parts[1].substring(0,
+						parts[1].indexOf(", partNo"));
+				String partNum = parts[2].substring(0,
+						parts[2].indexOf(", description"));
+				String description = parts[3].substring(0,
+						parts[3].indexOf(", whereToBuy"));
+				String whereToBuy = parts[4].substring(0,
+						parts[4].indexOf(", buyDate"));
 				String buyDate = parts[5].substring(0,
 						parts[5].indexOf(", price"));
 				String priceStr = parts[6].substring(0,
 						parts[6].indexOf(", stored"));
 				int stored = 1;
 				// Clean and det values to variables
-				index=index.strip();
+				index = index.strip();
 				partNum = partNum.strip();
 				description = description.strip();
 				whereToBuy = whereToBuy.strip();
@@ -141,22 +147,25 @@ public class PartsLibrary implements Library<Parts> {
 				int itemId = Integer.parseInt(index);
 				int partNo = Integer.parseInt(partNum);
 				float price = Float.parseFloat(priceStr);
+				// Keep track on highest uniqID(itemId) value
 				if (itemId > maxItemID) {
 					maxItemID = itemId;
 				}
 				fileInput.add(new Parts(itemId, partNo, description, whereToBuy,
 						buyDate, price, stored));
-			} 
+			}
 			partsList = fileInput;
-
-			System.out.println("\n File name: " + myObj.getName());
-			System.out.println(" Absolute path: " + myObj.getAbsolutePath());
+			System.out.println(
+					" =============== Info Parts Library ===============");
+			System.out.println(" File name: " + myObj.getName());
+			System.out.println(" Absolute path: \n " + myObj.getAbsolutePath());
 			System.out.println(" File size in bytes " + myObj.length());
-		}
-		catch (FileNotFoundException err) {
+			System.out.println(
+					"===================================================");
+		} catch (FileNotFoundException err) {
 			System.out.println("An error occurred.");
 			err.printStackTrace();
-		}		
+		}
 	}
 
 	/**
@@ -177,10 +186,17 @@ public class PartsLibrary implements Library<Parts> {
 
 	@SuppressWarnings("unused")
 	public int getNoOfItems() {
-//		int index = 0;
+		int index = 0;
 		// for loopen snurrar x antal varv tills library list är genomsökt
 		for (Parts temp : partsList) {
-//			index++;
+			index++;
+		}
+		return index;
+	}
+
+	@SuppressWarnings("unused")
+	public int getMaxItemID() {
+		for (Parts temp : partsList) {
 			if (temp.getItemId() > maxItemID) {
 				maxItemID = temp.getItemId();
 			}
@@ -190,8 +206,8 @@ public class PartsLibrary implements Library<Parts> {
 
 	public Parts getItem(int itemId) {
 		for (Parts temp : partsList) {
-			if(temp.getItemId()==itemId) {
-				return temp;				
+			if (temp.getItemId() == itemId) {
+				return temp;
 			}
 		}
 		return null;
