@@ -1,0 +1,4 @@
+[itemId= 1  , partNo= 41015979  , description= ESP32 Feather       , whereToBuy= Electrokit     , buyDate= 2020-11-10, price= 279,00, stored=   1]
+[itemId= 2  , partNo= 41015302  , description= Teensy 3.5          , whereToBuy= Electrokit     , buyDate= 2020-11-10, price= 379,00, stored=   1]
+[itemId= 3  , partNo= 41015979  , description= ESP32 Feather       , whereToBuy= Electrokit     , buyDate= 2021-05-15, price= 279,00, stored=   1]
+[itemId= 4  , partNo= 123456    , description= Test                , whereToBuy= TestInköp      , buyDate= 2022-04-15, price= 123,25, stored=   0]
