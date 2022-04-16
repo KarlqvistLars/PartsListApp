@@ -63,20 +63,23 @@ public class TestPart {
 				tempFromWhereToBuy);
 	}
 
-	// @Test
-	// public void testRunningTime() {
-	// m = new Parts(1, "testTitel", "testActor", 1900, 100);
-	// int tempRunningTime = 100;
-	// int tempFromRunningTime = m.getRunningTime();
-	// Assert.assertEquals(tempRunningTime , tempFromRunningTime);
-	// }
-	//
-	// @Test
-	// public void testToString() {
-	// m = new Parts(1, "testTitel", "testActor", 1900, 100);
-	// String expectedMassage= " [id= 38, title= testTitel , actor= testActor ,
-	// productionYear= 1900, runningTime= 100]";
-	// String fromToString = m.toString();
-	// Assert.assertEquals(expectedMassage, fromToString);
-	// }
+	@Test
+	public void testBuyDate() {
+		m = new Parts(0, 12, "ESP32 Feather", "TestElectrokit", "2020-11-10", 0,
+				0);
+		String tempBuyDate = "2020-11-10";
+		String tempFromBuyDate = m.getBuyDate();
+		Assert.assertEquals("2020-11-10", tempBuyDate, tempFromBuyDate);
+	}
+
+	@Test
+	public void testToString() {
+		m = new Parts(3, 41015979, "ESP32 Feather", "TestElectrokit",
+				"2021-05-15", 279, 1);
+		String expectedMassage = "[itemId= 3  , partNo= 41015979  , description= ESP32 Feather       , whereToBuy= TestElectrokit     , buyDate= 2021-05-15, price= 279,00, stored=   1]";
+		String fromToString = m.toString();
+		Assert.assertEquals(
+				"[itemId= 3  , partNo= 41015979  , description= ESP32 Feather       , whereToBuy= TestElectrokit     , buyDate= 2021-05-15, price= 279,00, stored=   1]",
+				expectedMassage, fromToString);
+	}
 }
