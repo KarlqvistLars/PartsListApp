@@ -1,9 +1,9 @@
 
 package partsLibrary;
 
-public class Parts implements Comparable<Parts>{
+public class Parts implements Comparable<Parts> {
 
-	private int itemId=1;
+	private int itemId = 1;
 	private final int partNo;
 	private final String description;
 	private final String whereToBuy;
@@ -13,7 +13,6 @@ public class Parts implements Comparable<Parts>{
 
 	public static int uniqId = 1;
 	public Object toStringNoID;
-//	boolean showID;
 	public int maxItem = 0;
 
 	// constructor
@@ -21,8 +20,7 @@ public class Parts implements Comparable<Parts>{
 			String buyDate, float price, int stored) {
 		if (itemId == 0) {
 			this.itemId = uniqId++;
-		}
-		else {
+		} else {
 			this.itemId = itemId;
 		}
 		this.partNo = partNo;
@@ -31,8 +29,6 @@ public class Parts implements Comparable<Parts>{
 		this.buyDate = buyDate;
 		this.stored = stored;
 		this.price = price;
-//		this.inUse=
-//		this.inWhere=
 	}
 
 	public int getUniqId() {
@@ -44,6 +40,7 @@ public class Parts implements Comparable<Parts>{
 	}
 
 	public int getMaxItem() {
+
 		return maxItem;
 	}
 
@@ -86,38 +83,21 @@ public class Parts implements Comparable<Parts>{
 				itemId, partNo, description, whereToBuy, buyDate, price,
 				stored);
 	}
-	
+
 	public String toPrint() {
 		return String.format(
 				"[partNo= %-10d, description= %-20s, whereToBuy= %-15s, buyDate= %10s, price= %8.2f]",
 				partNo, description, whereToBuy, buyDate, price);
 	}
 
-//	Eftersom det inte används så ska det inte testas.
-//	public boolean getYesNo(String ok) {
-//		if(ok.contains("Y")||ok.contains("y")) {
-//			return true;
-//		}
-//		else {
-//			if(ok.contains("N")||ok.contains("n")) {
-//				System.out.format("\n List not saved\n");
-//			}
-//			else {
-//				System.out.format("\n Not a valid input\n");
-//			}
-//		}
-//		return false;
-//	}
-
 	@Override
 	public int compareTo(Parts o) {
-//		Förberedd för jämförelse av filmens speltid.
-//		return this.runningTime - that.runningTime;
+		// Förberedd för jämförelse av filmens speltid.
+		// return this.runningTime - that.runningTime;
 		return 0;
 	}
 
-
-//	public void showID(boolean b) {
-//		showID = b;
-//	}
+	// public void showID(boolean b) {
+	// showID = b;
+	// }
 }

@@ -76,10 +76,19 @@ public class TestPart {
 	public void testToString() {
 		m = new Parts(3, 41015979, "ESP32 Feather", "TestElectrokit",
 				"2021-05-15", 279, 1);
-		String expectedMassage = "[itemId= 3  , partNo= 41015979  , description= ESP32 Feather       , whereToBuy= TestElectrokit     , buyDate= 2021-05-15, price= 279,00, stored=   1]";
+		String expectedMassage = "[itemId= 3  , partNo= 41015979  , description= ESP32 Feather       , whereToBuy= TestElectrokit , buyDate= 2021-05-15, price= 279,00, stored=   1]";
 		String fromToString = m.toString();
 		Assert.assertEquals(
-				"[itemId= 3  , partNo= 41015979  , description= ESP32 Feather       , whereToBuy= TestElectrokit     , buyDate= 2021-05-15, price= 279,00, stored=   1]",
+				"[itemId= 3  , partNo= 41015979  , description= ESP32 Feather       , whereToBuy= TestElectrokit , buyDate= 2021-05-15, price= 279,00, stored=   1]",
 				expectedMassage, fromToString);
+	}
+
+	@Test
+	public void testToPrint() {
+		m = new Parts(3, 41015979, "ESP32 Feather", "TestElectrokit",
+				"2021-05-15", 279, 1);
+		String expectedMassage = "[partNo= 41015979  , description= ESP32 Feather       , whereToBuy= TestElectrokit , buyDate= 2021-05-15, price=   279,00]";
+		String fromToPrint = m.toPrint();
+		Assert.assertEquals(expectedMassage, fromToPrint);
 	}
 }
