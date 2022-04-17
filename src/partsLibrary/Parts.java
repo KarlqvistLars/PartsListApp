@@ -39,6 +39,11 @@ public class Parts implements Comparable<Parts> {
 		uniqId = val;
 	}
 
+	/**
+	 * Getter to the: public int maxItem
+	 * 
+	 * @return Returns the value on the the highest number used on itemId.
+	 */
 	public int getMaxItem() {
 
 		return maxItem;
@@ -48,30 +53,67 @@ public class Parts implements Comparable<Parts> {
 		maxItem = val;
 	}
 
+	/**
+	 * Getter to the: private int itemId
+	 * 
+	 * @return Returns the value on the itemId witch is the partslist uniqId or
+	 *         key.
+	 */
 	public int getItemId() {
 		return itemId;
 	}
 
+	/**
+	 * Setter to the: private int itemId
+	 * 
+	 * @param itemId
+	 *            Sets the itemId to a value. Is used by JUnit testing.
+	 */
 	public void setItemId(int itemId) {
 		this.itemId = itemId;
 	}
 
+	/**
+	 * Getter to the: private final int partNo
+	 * 
+	 * @return Returns the value on the partNo variable.
+	 */
 	public int getPartNo() {
 		return partNo;
 	}
 
+	/**
+	 * Getter to the: private final String getDescription
+	 * 
+	 * @return Returns the value on the parts Description.
+	 */
 	public String getDescription() {
 		return description;
 	}
 
+	/**
+	 * Getter to the: private final String whereToBuy
+	 * 
+	 * @return Returns the value on the prefered supplier.
+	 */
 	public String getWhereToBuy() {
 		return whereToBuy;
 	}
 
+	/**
+	 * Getter to the: private final String BuyDate
+	 * 
+	 * @return Returns the value on the parts purshase date if set.
+	 */
 	public String getBuyDate() {
 		return buyDate;
 	}
 
+	/**
+	 * Getter to the: private final String getPrice
+	 * 
+	 * @return Returns the value on the parts price if set..
+	 */
 	public float getPrice() {
 		return price;
 	}
