@@ -22,13 +22,13 @@ public class TestPartLibrary {
 		Library<Parts> testLibrary = new PartsLibrary();
 
 		int sizeBeforeAdd = testLibrary.getNoOfItems();
-		System.out.printf("%d%n", sizeBeforeAdd);
+		System.out.printf("size before add %d%n", sizeBeforeAdd);
 
 		Parts temp = new Parts(0, 12, "testPart", "test", "2020-11-10", 0, 0);
 		testLibrary.addItem(temp);
 
 		int sizeAfterAdd = testLibrary.getNoOfItems();
-		System.out.printf("%d%n", sizeAfterAdd);
+		System.out.printf("size after add %d%n", sizeAfterAdd);
 
 		assertNotEquals(sizeBeforeAdd, sizeAfterAdd);
 	}

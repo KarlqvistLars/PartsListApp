@@ -6,29 +6,27 @@ import java.util.List;
 public interface Library<T> {
 
 	/**
-	 * L�gger till nytt item
-	 * 
+	 * Adds new item
+	 *
 	 * @param item
-	 *            Objekt av typen T
-	 * @return returnerar boolean true ifall objekt �r tillagt.
+	 *            - Object of type T
+	 * @return returns boolean true if item is added.
 	 */
 	boolean addItem(T item);
 
 	/**
-	 * Tar bort item av typen Movie.
-	 * 
-	 * @param index
-	 *            Objekt av typen Movie.
-	 * @return returnerar boolean true ifall objekt �r borttaget.
+	 * Removes item or type Parts.
+	 *
+	 * @param item
+	 *            - Object of type Parts.
+	 * @return returns boolean true if object is removed.
 	 */
 	boolean removeItem(T item);
 
 	/**
-	 * H�mtar antalet objekt av typen items
-	 * 
-	 * @param H�mtar
-	 *            antalet items
-	 * @return returnerar antalet
+	 * Returns the number of items
+	 *
+	 * @return returns the number of items
 	 */
 	default int getNoOfItems() {
 		return 0;
@@ -39,40 +37,43 @@ public interface Library<T> {
 	}
 
 	/**
-	 * Listar eller visar biblioteksinneh�llet
+	 * Lists or displays the library contents
 	 */
 	void showLibraryContents();
 
 	void showLibraryOnTextConsole();
 
 	/**
-	 * Menu choise 5 - Writes content Skriver till databasfilen.
-	 * 
+	 * Menu choise 5 - Writes content to the database file.
+	 *
 	 * @param filename
+	 *            - The file partslibrarylist.txt
 	 */
 	void storeItems(String filename);
 
 	/**
 	 * Menu choise 6 - Read contents from file to library from databasefile
 	 * 'filename' partslibrarylist.txt.
-	 * 
+	 *
 	 * @param filename
 	 *            partslibrarylist.txt
 	 */
 	void readItems(String filename);
 
 	/**
-	 * Menu choise 7 - Writes content to *.cvs - Skriver till databasfilen.
+	 * Menu choice 7 - Write content in format *.csv
 	 * 
 	 * @param filename
+	 *            - the *.csv file
 	 */
 	void storeItemsAsCSV(String filename);
 
 	/**
-	 * S�ker i listan 'librarylist' efter s�kstr�ngen serachPattern
-	 * 
+	 * Searches in the 'librarylist' list for the search string serachPattern
+	 *
 	 * @param searchPattern
-	 * @return Returnerar listan searchResult
+	 *            - The search string searchPattern is defined by user input.
+	 * @return Returns the searchResult list
 	 */
 
 	default List<T> searchItem(String searchPattern) {
