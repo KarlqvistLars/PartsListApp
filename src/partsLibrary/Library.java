@@ -45,6 +45,10 @@ public interface Library<T> {
 
 	void showLibraryOnTextConsole();
 
+	String showLibraryOnGUIConsole();
+
+	String showRowToRemoveOnGUI();
+
 	/**
 	 * Menu choise 5 - Writes content to the database file.
 	 *

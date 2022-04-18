@@ -45,6 +45,24 @@ public class PartsLibrary implements Library<Parts> {
 		}
 	}
 
+	public String showLibraryOnGUIConsole() {
+		StringBuilder returnText = new StringBuilder();
+		for (Parts temp : partsList) {
+			returnText.append(temp.toPrint());
+			returnText.append("\n");
+		}
+		return returnText.toString();
+	}
+
+	public String showRowToRemoveOnGUI() {
+		StringBuilder returnText = new StringBuilder();
+		for (Parts temp : partsList) {
+			returnText.append(temp.toRemove());
+			returnText.append("\n");
+		}
+		return returnText.toString();
+	}
+
 	/**
 	 * Menu choise 2 - Add Movie to library
 	 */
@@ -184,7 +202,7 @@ public class PartsLibrary implements Library<Parts> {
 		try (PrintWriter pw = new PrintWriter(new FileWriter(filename))) {
 			for (Parts savedMovie : this.partsList) {
 				pw.printf("%d,%d,%s,%s,%s\n", savedMovie.getItemId(),
-						savedMovie.getPartNo(), savedMovie.getname(),
+						savedMovie.getPartNo(), savedMovie.getName(),
 						savedMovie.getWhereToBuy(), savedMovie.getBuyDate());
 			}
 		} catch (IOException ioe) {

@@ -1,0 +1,6 @@
+[itemId= 19 , partNo= 41015979  , name= ESP32 Feather       , whereToBuy= Electrokit     , buyDate= 2020-11-10, price= 279,00, stored=   0]
+[itemId= 20 , partNo= 41015302  , name= Teensy 3.5          , whereToBuy= Electrokit     , buyDate= 2020-11-10, price= 379,00, stored=   0]
+[itemId= 21 , partNo= 41015979  , name= ESP32 Feather       , whereToBuy= Electrokit     , buyDate= 2021-05-15, price= 279,00, stored=   0]
+[itemId= 22 , partNo= 41015979  , name= ESP32 Feather       , whereToBuy= Electrokit     , buyDate= 2020-11-10, price= 279,00, stored=   0]
+[itemId= 23 , partNo= 41015979  , name= ESP32 Feather       , whereToBuy= Electrokit     , buyDate= 2020-11-10, price= 279,00, stored=   0]
+[itemId= 24 , partNo= 41015979  , name= ESP32 Feather       , whereToBuy= Electrokit     , buyDate= 2020-11-10, price= 279,00, stored=   0]

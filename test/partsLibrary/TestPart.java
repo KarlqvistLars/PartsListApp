@@ -44,13 +44,12 @@ public class TestPart {
 	}
 
 	@Test
-	public void testDescription() {
+	public void testName() {
 		m = new Parts(0, 12, "ESP32 Feather", "TestElectrokit", "2020-11-10", 0,
 				0);
-		String tempDescription = "ESP32 Feather";
-		String tempFromTestDescription = m.getDescription();
-		Assert.assertEquals("ESP32 Feather", tempDescription,
-				tempFromTestDescription);
+		String tempName = "ESP32 Feather";
+		String tempFromTestName = m.getName();
+		Assert.assertEquals("ESP32 Feather", tempName, tempFromTestName);
 	}
 
 	@Test

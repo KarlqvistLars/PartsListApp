@@ -113,7 +113,7 @@ public class Parts implements Comparable<Parts> {
 	 * 
 	 * @return Returns the value on the parts name.
 	 */
-	public String getname() {
+	public String getName() {
 		return name;
 	}
 	/**
