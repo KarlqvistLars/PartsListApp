@@ -41,6 +41,8 @@ public interface Library<T> {
 	 */
 	void showLibraryContents();
 
+	void showLibraryRowToRemove();
+
 	void showLibraryOnTextConsole();
 
 	/**
