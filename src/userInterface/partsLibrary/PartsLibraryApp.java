@@ -21,10 +21,11 @@ public class PartsLibraryApp {
 				Scanner keyboard = new Scanner(System.in);
 				keyboard.useDelimiter(System.lineSeparator());
 
-				String filename = "partslibrarylist.txt";
+				// Init Parts datafile
 				Library<Parts> parts = new PartsLibrary();
-
+				String filename = "partslist.txt";
 				populateLibrary(parts);
+				parts.storeItems(filename);
 				parts.readItems(filename);
 
 				do { // Menu system
@@ -46,10 +47,10 @@ public class PartsLibraryApp {
 						case 1 :
 							System.out.println("\n PartsLibrary list");
 							System.out.println(
-									"  _________________________________________________________________________________________________________________________");
+									" ___________________________________________________________________________________________________________________");
 							parts.showLibraryOnTextConsole();
 							System.out.println(
-									"  =========================================================================================================================");
+									" ===================================================================================================================");
 							break;
 
 						case 2 :
@@ -61,7 +62,7 @@ public class PartsLibraryApp {
 							int partNo = Integer.parseInt(partNum);
 
 							System.out.print(" Enter decription: ");
-							String description = keyboard.next();
+							String name = keyboard.next();
 
 							System.out.print(" Enter where to buy: ");
 							String whereToBuy = keyboard.next();
@@ -74,7 +75,7 @@ public class PartsLibraryApp {
 
 							int stored = 0;
 
-							Parts temp = new Parts(itemId, partNo, description,
+							Parts temp = new Parts(itemId, partNo, name,
 									whereToBuy, buyDate, price, stored);
 							parts.addItem(temp);
 							break;
@@ -82,10 +83,10 @@ public class PartsLibraryApp {
 						case 3 :
 							System.out.println("\n Parts Library list");
 							System.out.println(
-									"  ________________________________________________________________________________________________________________");
-							parts.showLibraryContents();
+									" __________________________________________________________________________________________________________");
+							parts.showLibraryRowToRemove();
 							System.out.println(
-									"  ================================================================================================================");
+									" ==========================================================================================================");
 
 							System.out.format(
 									"\n Are you sure you want to delete part from list? ");
@@ -123,32 +124,34 @@ public class PartsLibraryApp {
 							if (searchPartsList != null) {
 								int i = 0;
 								System.out.format("  Search result\n"
-										+ "  ________________________________________________________________________________________________________________\n");
+										+ " ___________________________________________________________________________________________________________________\n");
 								for (Parts result : searchPartsList) {
 									i++;
-									System.out.format(" %s\n", result);
+									System.out.format(" %s\n",
+											result.toPrint());
 								}
 								System.out.format(
-										"  ================================================================================================================\n");
+										" ===================================================================================================================\n");
 								System.out.format("  %d partss found\n\n", i);
 							}
 							break;
 
 						case 5 :
 							System.out.println(
-									"  ________________________________________________________________________________________________________________");
-							parts.showLibraryContents();
+									" ___________________________________________________________________________________________________________________");
+							parts.showLibraryOnTextConsole();
 							System.out.println(
-									"  ================================================================================================================");
+									" ===================================================================================================================");
 							System.out.format(
 									"\n Do you want to save current list to file?\n"
 											+ " Previous saved %s will be overwritten (Y/N): ",
 									filename);
-							String ok5 = keyboard.next();
-							if (ok5.contains("Y") || ok5.contains("y")) {
+							String okSave = keyboard.next();
+							if (okSave.contains("Y") || okSave.contains("y")) {
 								parts.storeItems(filename);
 							} else {
-								if (ok5.contains("N") || ok5.contains("n")) {
+								if (okSave.contains("N")
+										|| okSave.contains("n")) {
 									System.out.format("\n List not saved\n");
 								} else {
 									System.out.format(
@@ -161,13 +164,14 @@ public class PartsLibraryApp {
 							System.out.format(
 									"\n Are you sure you want to read list from saved file?\n"
 											+ " Unsaved changes will be lost and [id=] renumbered(Y/N): ");
-							String ok6 = keyboard.next();
-							if (ok6.contains("Y") || ok6.contains("y")) {
+							String okRead = keyboard.next();
+							if (okRead.contains("Y") || okRead.contains("y")) {
 
 								System.out.format(" Content of %s\n", filename);
 								parts.readItems(filename);
 							} else {
-								if (ok6.contains("N") || ok6.contains("n")) {
+								if (okRead.contains("N")
+										|| okRead.contains("n")) {
 									System.out.format(
 											"\n Saved partslist not uploaded from file\n");
 								} else {
@@ -180,10 +184,10 @@ public class PartsLibraryApp {
 						case 7 :
 							filename = "partslist.csv";
 							System.out.println(
-									"  ____________________________________________________________________________________________________________________");
-							parts.showLibraryContents();
+									" ___________________________________________________________________________________________________________________");
+							parts.showLibraryOnTextConsole();
 							System.out.println(
-									"  ====================================================================================================================");
+									" ===================================================================================================================");
 							System.out.format(
 									"\n Do you want to save current list to *.csv?\n"
 											+ " Previous saved %s will be overwritten (Y/N): ",
@@ -201,6 +205,7 @@ public class PartsLibraryApp {
 											"\n Not a valid input, try again!\n");
 								}
 							}
+							filename = "partslist.txt";
 							break;
 
 						case 0 :

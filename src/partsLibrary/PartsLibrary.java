@@ -32,6 +32,13 @@ public class PartsLibrary implements Library<Parts> {
 		}
 	}
 
+	@Override
+	public void showLibraryRowToRemove() {
+		for (Parts temp : partsList) {
+			System.out.format(" %s%n", temp.toRemove());
+		}
+	}
+
 	public void showLibraryOnTextConsole() {
 		for (Parts temp : partsList) {
 			System.out.format(" %s%n", temp.toPrint());
@@ -71,8 +78,9 @@ public class PartsLibrary implements Library<Parts> {
 
 		while (iter.hasNext()) {
 			Parts temp = iter.next();
-			if (temp.toString().toLowerCase()
+			if (temp.toPrint().toLowerCase()
 					.contains(searchPattern.toLowerCase())) {
+
 				searchResult.add(temp);
 				ok = true;
 			}
@@ -124,8 +132,8 @@ public class PartsLibrary implements Library<Parts> {
 				String index = parts[1].substring(0,
 						parts[1].indexOf(", partNo"));
 				String partNum = parts[2].substring(0,
-						parts[2].indexOf(", description"));
-				String description = parts[3].substring(0,
+						parts[2].indexOf(", name"));
+				String name = parts[3].substring(0,
 						parts[3].indexOf(", whereToBuy"));
 				String whereToBuy = parts[4].substring(0,
 						parts[4].indexOf(", buyDate"));
@@ -137,7 +145,7 @@ public class PartsLibrary implements Library<Parts> {
 				// Clean and det values to variables
 				index = index.strip();
 				partNum = partNum.strip();
-				description = description.strip();
+				name = name.strip();
 				whereToBuy = whereToBuy.strip();
 				buyDate = buyDate.strip();
 
@@ -151,17 +159,17 @@ public class PartsLibrary implements Library<Parts> {
 				if (itemId > maxItemID) {
 					maxItemID = itemId;
 				}
-				fileInput.add(new Parts(itemId, partNo, description, whereToBuy,
+				fileInput.add(new Parts(itemId, partNo, name, whereToBuy,
 						buyDate, price, stored));
 			}
 			partsList = fileInput;
 			System.out.println(
-					" =============== Info Parts Library ===============");
+					" ======================== Info Parts Library ========================");
 			System.out.println(" File name: " + myObj.getName());
 			System.out.println(" Absolute path: \n " + myObj.getAbsolutePath());
 			System.out.println(" File size in bytes " + myObj.length());
 			System.out.println(
-					"===================================================");
+					"=====================================================================");
 		} catch (FileNotFoundException err) {
 			System.out.println("An error occurred.");
 			err.printStackTrace();
@@ -176,7 +184,7 @@ public class PartsLibrary implements Library<Parts> {
 		try (PrintWriter pw = new PrintWriter(new FileWriter(filename))) {
 			for (Parts savedMovie : this.partsList) {
 				pw.printf("%d,%d,%s,%s,%s\n", savedMovie.getItemId(),
-						savedMovie.getPartNo(), savedMovie.getDescription(),
+						savedMovie.getPartNo(), savedMovie.getname(),
 						savedMovie.getWhereToBuy(), savedMovie.getBuyDate());
 			}
 		} catch (IOException ioe) {
